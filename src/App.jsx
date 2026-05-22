@@ -206,7 +206,7 @@ export default function MealPlanner() {
   );
 
   return (
-    <div style={{ minHeight: "100vh", background: "#FAF6F0", fontFamily: "'DM Sans', sans-serif", color: "#5C3D2E" }}>
+    <div style={{ minHeight: "100vh", background: "#FAF6F0", fontFamily: "'DM Sans', sans-serif", color: "#5C3D2E", "--path-color": pathColor }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap');
@@ -264,8 +264,8 @@ export default function MealPlanner() {
           position: relative;
         }
         .food-card:hover {
-          border-color: ${pathColor};
-          box-shadow: 0 3px 12px ${pathColor}25;
+          border-color: var(--path-color);
+          box-shadow: 0 3px 12px rgba(0,0,0,0.15);
           transform: translateY(-1px);
         }
         .food-card:active { cursor: grabbing; transform: scale(0.97); }
@@ -279,12 +279,12 @@ export default function MealPlanner() {
           transition: all 0.15s;
         }
         .meal-slot.active {
-          border-color: ${pathColor};
-          background: ${pathColor}08;
+          border-color: var(--path-color);
+          background: rgba(0,0,0,0.03);
         }
         .meal-slot.drag-over {
-          border-color: ${pathColor};
-          background: ${pathColor}15;
+          border-color: var(--path-color);
+          background: rgba(0,0,0,0.08);
           transform: scale(1.01);
         }
 
@@ -314,8 +314,8 @@ export default function MealPlanner() {
           white-space: nowrap;
           font-family: 'DM Sans', sans-serif;
         }
-        .filter-pill:hover { border-color: ${pathColor}; color: ${pathColor}; }
-        .filter-pill.active { background: ${pathColor}; border-color: ${pathColor}; color: white; }
+        .filter-pill:hover { border-color: var(--path-color); color: var(--path-color); }
+        .filter-pill.active { background: var(--path-color); border-color: var(--path-color); color: white; }
 
         .day-btn {
           padding: 8px 4px;
@@ -330,8 +330,8 @@ export default function MealPlanner() {
           transition: all 0.15s;
           min-width: 44px;
         }
-        .day-btn:hover { background: ${pathColor}15; }
-        .day-btn.active { background: ${pathColor}; }
+        .day-btn:hover { background: rgba(0,0,0,0.08); }
+        .day-btn.active { background: var(--path-color); }
 
         .tab-btn {
           padding: 10px 20px;
@@ -345,7 +345,7 @@ export default function MealPlanner() {
           transition: all 0.15s;
           white-space: nowrap;
         }
-        .tab-btn.active { border-bottom-color: ${pathColor}; color: ${pathColor}; }
+        .tab-btn.active { border-bottom-color: var(--path-color); color: var(--path-color); }
 
         .added-food {
           display: flex;
@@ -422,7 +422,7 @@ export default function MealPlanner() {
 
         .print-btn {
           padding: 10px 20px;
-          background: ${pathColor};
+          background: var(--path-color);
           color: white;
           border: none;
           border-radius: 8px;
@@ -674,9 +674,9 @@ export default function MealPlanner() {
               </div>
 
               {/* Copy to all days */}
-              <button onClick={copyDayToAll} style={{ marginTop: 16, width: "100%", padding: "12px", border: `2px dashed ${pathColor}`, borderRadius: 10, background: "transparent", color: pathColor, fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 700, cursor: "pointer", transition: "all 0.15s" }}
-                onMouseEnter={e => e.target.style.background = `${pathColor}10`}
-                onMouseLeave={e => e.target.style.background = "transparent"}>
+              <button onClick={copyDayToAll} style={{ marginTop: 16, width: "100%", padding: "12px", border: "2px dashed " + pathColor, borderRadius: 10, background: "transparent", color: pathColor, fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 700, cursor: "pointer", transition: "all 0.15s" }}
+                onMouseEnter={e => e.target.style.background = pathColor + '20'}
+                onMouseLeave={e => e.target.style.background = 'transparent'}>
                 Use this day as my weekly template →
               </button>
             </div>
